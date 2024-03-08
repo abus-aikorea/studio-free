@@ -1,0 +1,24 @@
+# for Whisper
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch
+torchaudio
+faster-whisper==0.9.0
+ctranslate2
+ffmpeg-python==0.2.0
+# for Demucs
+demucs==4.0.1
+PySoundFile
+scipy
+invisible-watermark
+fonts
+font-roboto
+# gradio
+fastapi==0.109.2
+gradio==3.50.2
+# gradio==4.19.2
+yt-dlp==2023.10.13
+json5
+more_itertools
+pyyaml
+pandas==1.5.0
+cryptography
