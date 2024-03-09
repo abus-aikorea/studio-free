@@ -41,10 +41,28 @@ ABUS One-Click Studio 가 제공하는 기능:
 * GPU: CUDA 11.8을 지원하는 **NVIDIA** 그래픽 카드 권장
 * 인터넷 연결 필요(설치시)
 
-## 실행 방법
+## 설치 와 실행
+
+### step 1. 패키지 준비
+* A. 유료버전
+    + USB에 포함된 압축파일(**abus-studio-v2.x.x.zip**)을 컴퓨터의 적당한 위치에 압축해제
+    + 혹은, 이미 압축이 해제된 폴더(**abus-studio-v2.x.x**)를 컴퓨터의 적당한 위치에 복사
+
+* B. 무료버전
+  + [![GitHub Release](https://img.shields.io/github/v/release/abus-aikorea/studio-free)](https://github.com/abus-aikorea/studio-free/releases) 로부터 최신 릴리즈(**Source code (zip)**) 다운로드 후 압축 해제 
+  + 혹은, git clone 으로 소스코드 다운로드
+    
+```bash
+git clone https://github.com/abus-aikorea/studio-free.git
+```
+
+### step 2. 프로그램 설치 및 실행
 1. `configure.bat` 실행: Windows에 python, git, ffmpeg, CUDA(NVIDIA GPU를 사용하는 경우) 를 설치합니다.
 2. `install.bat` 실행: venv 폴더를 만들고 가상환경을 준비합니다. 가상환경에 ABUS One-Click 을 설치합니다.
 3. `start.bat` 실행: 자동으로 Internet Browser (Chrome)가 실행 됩니다. ABUS One-Click 을 위한 Web-UI 를 실행합니다. 
+   * Browser가 자동으로 실행되지 않는 경우
+     * Windows-Commnad 창을 종료하고, start.bat 을 다시 실행하거나
+     * Browser를 직접 실행하고, Windows-Command 창에 표시된 주소(예, http://127.0.0.1:11004)를 주소창에 입력합니다.
 4. `uninstall.bat` 실행: 설치된 가상환경을 제거합니다. Windows 에 설치한 python, git, ffmepg, CUDA 패키지를 제거합니다(선택할 경우)
 
 ## 주의사항

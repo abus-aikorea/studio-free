@@ -41,10 +41,29 @@ ABUS One-Click Studio offers:
 * GPU: NVIDIA graphics card supporting CUDA 11.8 is recommended
 * Internet connection required (installation)
 
-## How to run
+
+## Installing and running
+
+### step 1. Package preparation
+* A. Paid version
+    + Unzip the compressed file (**abus-studio-v2.x.x.zip**) included in the USB to an appropriate location on your computer.
+    + Or, copy the already unzipped folder (**abus-studio-v2.x.x**) to an appropriate location on your computer.
+
+* B. Free version
+  + Download and unzip the latest release ( **Source code (zip)** ) from [![GitHub Release](https://img.shields.io/github/v/release/abus-aikorea/studio-free)](https://github.com/abus-aikorea/studio-free/releases) 
+  + Or, download source code with git clone
+
+```bash
+git clone https://github.com/abus-aikorea/studio-free.git
+```
+
+### step 2. How to install and run
 1. Run `configure.bat`: Install python, git, ffmpeg, and CUDA (if using NVIDIA GPU) on Windows.
 2. Run `install.bat`: Create a venv folder and prepare the virtual environment. Install ABUS One-Click in the virtual environment.
 3. Run `start.bat`: Internet Browser (Chrome) will automatically run. Run Web-UI for ABUS One-Click.
+   * When the browser does not run automatically
+     * Close the Windows-Commnad window and run start.bat again or
+     * Run the browser directly and enter the address displayed in the Windows-Command window (e.g. http://127.0.0.1:11004) into the address bar.
 4. Run `uninstall.bat`: Removes the installed virtual environment. Remove python, git, ffmepg, and CUDA packages installed on Windows (if selected)
 
 ## caution
