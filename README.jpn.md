@@ -63,7 +63,7 @@ git clone https://github.com/abus-aikorea/studio-free.git
 3. `start.bat` 実行: 自動的に Internet Browser (Chrome) が実行されます。 ABUS One-Click 用の Web-UI を実行します。
    * Browserが自動的に実行されない場合
      * Windows-Commnadウィンドウを終了し、start.batを再実行するか、
-     * Browserを直接実行し、Windows-Commnadウィンドウに表示されたアドレス（例：http://127.0.0.1:11004）をアドレスウィンドウに入力します。
+     * Browserを直接実行し、Windows-Commnadウィンドウに表示されたアドレス（例：**http://127.0.0.1:11004** ）をアドレスウィンドウに入力します。
 4. `uninstall.bat`の実行： インストールされている仮想環境を削除します。 Windowsにインストールしたpython、git、ffmepg、CUDAパッケージを削除します（選択した場合）
 
 

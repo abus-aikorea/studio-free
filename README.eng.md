@@ -63,7 +63,7 @@ git clone https://github.com/abus-aikorea/studio-free.git
 3. Run `start.bat`: Internet Browser (Chrome) will automatically run. Run Web-UI for ABUS One-Click.
    * When the browser does not run automatically
      * Close the Windows-Commnad window and run start.bat again or
-     * Run the browser directly and enter the address displayed in the Windows-Command window (e.g. http://127.0.0.1:11004) into the address bar.
+     * Run the browser directly and enter the address displayed in the Windows-Command window (e.g. **http://127.0.0.1:11004** ) into the address bar.
 4. Run `uninstall.bat`: Removes the installed virtual environment. Remove python, git, ffmepg, and CUDA packages installed on Windows (if selected)
 
 ## caution
