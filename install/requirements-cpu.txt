@@ -15,7 +15,8 @@ font-roboto
 fastapi==0.109.2
 gradio==3.50.2
 # gradio==4.19.2
-yt-dlp==2023.10.13
+# yt-dlp==2023.10.13
+yt-dlp==2023.11.16
 json5
 more_itertools
 pyyaml
