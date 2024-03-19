@@ -1,7 +1,7 @@
 {
     default_model_name: "large-v2",
-    language: "Korean",
-    highlight_words: false,
+    language: "Japanese",
+    highlight_words: false,   
     burn_subtitles: false,
     video_quality: "best",
     audio_format: "mp3",

@@ -9,7 +9,7 @@
 ## はじめに
 最新のAIツールをワンクリックで提供する[ABUS](https://slashpage.com/abus)です。
 私たちはOpenAIの音声認識＆翻訳エンジンであるWhisperとFacebook ResearchのDemucsをワンクリックでインストール＆駆動する技術を持っています。
-ABUS One-Clickを使用すると、システム設定、モデル選択などの複雑な手順なしに、音声認識、翻訳、音声合成、ボーカル除去などの最新のAIツールをワンクリックで自分のPCで簡単に利用できます。 ABUS One-Clickで、誰よりも早く最新のAI技術に出会えます。
+ABUS One-Clickを使用すると、システム設定、モデル選択などの複雑な手順なしに、音声認識、翻訳、ボーカル除去などの最新のAIツールをワンクリックで自分のPCで簡単に利用できます。 ABUS One-Clickで、誰よりも早く最新のAI技術に出会えます。
 
 ABUS One-Click Studioが提供する機能：
 * システム設定、インストール、実行、削除プロセスを `One-Click` でサポート
@@ -34,7 +34,7 @@ ABUS One-Click Studioが提供する機能：
 
 
 ## 商品説明文
-* OS : Windows 10/11 **※ Linux, Mac OSには対応しておりません。**
+* OS : Windows 10/11 (64bits) **※ Linux, Mac OSには対応しておりません。**
 * CPU: Intelプロセッサ 2GHz以上(または同等の互換プロセッサ)
 * RAM: 4GB 以上
 * HDD: 10GB以上の空き容量(インストール時)
@@ -46,8 +46,8 @@ ABUS One-Click Studioが提供する機能：
 
 ### step 1. パッケージの準備
 * A.有料バージョン
-    + USBに含まれる圧縮ファイル（**abus-studio-v2.x.x.zip**）をコンピュータの適切な場所に解凍する
-    + またはすでに解凍されているフォルダ（**abus-studio-v2.x.x**）をコンピュータの適切な場所にコピーする
+    + USBに含まれる圧縮ファイル（**abus-studio-v3.x.x.zip**）をコンピュータの適切な場所に解凍する
+    + またはすでに解凍されているフォルダ（**abus-studio-v3.x.x**）をコンピュータの適切な場所にコピーする
 
 * B. 無料版
   + [![GitHub Release](https://img.shields.io/github/v/release/abus-aikorea/studio-free)](https://github.com/abus-aikorea/studio-free/releases) から最新リリース (**Source code (zip)**) ダウンロード後に解凍
@@ -59,13 +59,14 @@ git clone https://github.com/abus-aikorea/studio-free.git
 
 ## step 2. インストールして実行する方法
 1. `configure.bat`の実行： Windowsにpython、git、ffmpeg、CUDA（NVIDIA GPUを使用している場合）をインストールします。
-2. `install.bat`の実行： venvフォルダを作成し、仮想環境を準備します。仮想環境にABUS One-Clickをインストールします。
-3. `start.bat` 実行: 自動的に Internet Browser (Chrome) が実行されます。 ABUS One-Click 用の Web-UI を実行します。
+2. `start.bat`の実行: ABUS One-Click がインストールされていない場合は、インストールに進みます。 Web-UIを実行します。
    * Browserが自動的に実行されない場合
      * Windows-Commnadウィンドウを終了し、start.batを再実行するか、
      * Browserを直接実行し、Windows-Commnadウィンドウに表示されたアドレス（例：**http://127.0.0.1:11004** ）をアドレスウィンドウに入力します。
-4. `uninstall.bat`の実行： インストールされている仮想環境を削除します。 Windowsにインストールしたpython、git、ffmepg、CUDAパッケージを削除します（選択した場合）
 
+
+## step 3. アンインストールする方法
+* `uninstall.bat`の実行： installer_files を削除します。 Windows にインストールされている ffmepg および CUDA パッケージを削除します (選択した場合)
 
 ## 注意事項
 Windows Defenderが誤ってバッチファイルをトロイの木馬として認識している場合、これはしばしば「False Positive」と呼ばれます。この問題を解決するには、次の手順を実行できます。

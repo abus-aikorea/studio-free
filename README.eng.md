@@ -9,7 +9,7 @@
 ## Introduction
 [ABUS](https://slashpage.com/abus) provides the latest AI tools with one click.
 We have the technology to install and run OpenAI's voice recognition & translation engine Whisper and Facebook Research's Demucs with one click.
-With ABUS One-Click, you can easily use the latest AI tools such as voice recognition, translation, voice synthesis, and vocal removal on your PC with one click, without complicated procedures such as system setup and model selection. Experience the latest AI technology faster than anyone else with ABUS One-Click.
+With ABUS One-Click, you can easily use the latest AI tools such as voice recognition, translation and vocal removal on your PC with one click, without complicated procedures such as system setup and model selection. Experience the latest AI technology faster than anyone else with ABUS One-Click.
 
 ABUS One-Click Studio offers:
 * Supports system setup, installation, execution, and deletion processes with `One-Click`
@@ -34,7 +34,7 @@ ABUS One-Click Studio offers:
 
 
 ## Running Environment
-* OS : Windows 10/11 **※ Linux, Mac OS is not supported.**
+* OS : Windows 10/11 (64bits) **※ Linux, Mac OS is not supported.**
 * CPU: Intel Processor 2GHz or faster (or equivalent compatible)
 * RAM: 4GB or greater
 * HDD: At least 10GB of free space during installation
@@ -46,8 +46,8 @@ ABUS One-Click Studio offers:
 
 ### step 1. Package preparation
 * A. Paid version
-    + Unzip the compressed file (**abus-studio-v2.x.x.zip**) included in the USB to an appropriate location on your computer.
-    + Or, copy the already unzipped folder (**abus-studio-v2.x.x**) to an appropriate location on your computer.
+    + Unzip the compressed file (**abus-studio-v3.x.x.zip**) included in the USB to an appropriate location on your computer.
+    + Or, copy the already unzipped folder (**abus-studio-v3.x.x**) to an appropriate location on your computer.
 
 * B. Free version
   + Download and unzip the latest release ( **Source code (zip)** ) from [![GitHub Release](https://img.shields.io/github/v/release/abus-aikorea/studio-free)](https://github.com/abus-aikorea/studio-free/releases) 
@@ -58,13 +58,14 @@ git clone https://github.com/abus-aikorea/studio-free.git
 ```
 
 ### step 2. How to install and run
-1. Run `configure.bat`: Install python, git, ffmpeg, and CUDA (if using NVIDIA GPU) on Windows.
-2. Run `install.bat`: Create a venv folder and prepare the virtual environment. Install ABUS One-Click in the virtual environment.
-3. Run `start.bat`: Internet Browser (Chrome) will automatically run. Run Web-UI for ABUS One-Click.
+1. Run `configure.bat`: Install ffmpeg and CUDA (if using NVIDIA GPU) on Windows.
+2. Run `start.bat`: If ABUS One-Click is not installed, proceed with installation. Run Web-UI.
    * When the browser does not run automatically
      * Close the Windows-Commnad window and run start.bat again or
      * Run the browser directly and enter the address displayed in the Windows-Command window (e.g. **http://127.0.0.1:11004** ) into the address bar.
-4. Run `uninstall.bat`: Removes the installed virtual environment. Remove python, git, ffmepg, and CUDA packages installed on Windows (if selected)
+
+### step 3. How to uninstall
+* Run `uninstall.bat`: Remove installer_files . Remove the ffmepg and CUDA packages installed on Windows (if selected)
 
 ## caution
 When Windows Defender mistakenly recognizes a batch file as a Trojan, this is often called a 'False Positive'. To solve this problem, you can go through the following steps:

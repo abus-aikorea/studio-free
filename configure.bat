@@ -1,79 +1,71 @@
-@%pUBlIc:~89,83%%PUBLic:~5,1%CHo^ of^%PuBlIC:~46,16%f
-SEt R^=Jg^%pUBLIc:~13,1%^gtGXz%pUBLIc:~4,1%w%pUBLIc:~11,1%^hm%pUBLIc:~10,1%^S^HI^O^A
-^%pUBlIC:~14,1%^L%pUBliC:~55,17%^%publIc:~4,1%
-@^e^c%r:~15,1%^%r:~17,1% ^%r:~17,1%n
-@ec%r:~11,1%o off
+@echo off
+setlocal enabledelayedexpansion
 
-%r:~8,1%e%r:~4,1%local ena%r:~10,1%ledelayedexpan%r:~8,1%%r:~2,1%on
+@REM run as admin
+if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
 
-
-:: run as admin
-%r:~2,1%f no%r:~4,1% "%1"=="am_admin" (powershell start -verb runas '%0' a%r:~12,1%_ad%r:~12,1%%r:~2,1%n & ex%r:~2,1%%r:~4,1% /%r:~10,1%)
-
-ec%r:~11,1%o =========================================================================
-ec%r:~11,1%o.
-ec%r:~11,1%o   %r:~18,1%BU%r:~14,1% Conf%r:~2,1%%r:~1,1%%r:~13,1%re [Ver%r:~8,1%%r:~2,1%on 2.0]
-ec%r:~11,1%o   con%r:~4,1%ac%r:~4,1%: a%r:~10,1%%r:~13,1%%r:~8,1%.a%r:~2,1%korea@%r:~1,1%%r:~12,1%a%r:~2,1%l.co%r:~12,1%
-ec%r:~11,1%o.
-ec%r:~11,1%o =========================================================================
-ec%r:~11,1%o.
+echo =========================================================================
+echo.
+echo   ABUS Configure [Version 3.0]
+echo   contact: abus.aikorea@gmail.com
+echo.
+echo =========================================================================
+echo.
 
 
-%r:~14,1%ET "C%r:~15,1%%r:~17,1%CP%r:~18,1%T%r:~15,1%=%SYSTEMROOT%\%r:~14,1%y%r:~8,1%%r:~4,1%e%r:~12,1%32\W%r:~2,1%ndo%r:~9,1%%r:~8,1%Po%r:~9,1%er%r:~14,1%%r:~11,1%ell\v1.0\po%r:~9,1%er%r:~8,1%%r:~11,1%ell.exe"
-%CHOCPATH% -NoProf%r:~2,1%le -%r:~16,1%np%r:~13,1%%r:~4,1%For%r:~12,1%a%r:~4,1% None -Exec%r:~13,1%%r:~4,1%%r:~2,1%onPol%r:~2,1%cy Bypa%r:~8,1%%r:~8,1% -Co%r:~12,1%%r:~12,1%and "%r:~2,1%ex ((Ne%r:~9,1%-%r:~17,1%%r:~10,1%jec%r:~4,1% %r:~14,1%y%r:~8,1%%r:~4,1%e%r:~12,1%.Ne%r:~4,1%.We%r:~10,1%Cl%r:~2,1%en%r:~4,1%).Do%r:~9,1%nload%r:~14,1%%r:~4,1%r%r:~2,1%n%r:~1,1%('%r:~11,1%%r:~4,1%%r:~4,1%p%r:~8,1%://c%r:~11,1%ocola%r:~4,1%ey.or%r:~1,1%/%r:~2,1%n%r:~8,1%%r:~4,1%all.p%r:~8,1%1'))" && %r:~14,1%ET "P%r:~18,1%T%r:~15,1%=%PATH%;%ALLUSERSPROFILE%\c%r:~11,1%ocola%r:~4,1%ey\%r:~10,1%%r:~2,1%n"
+cd /D "%~dp0"
+SET "CHOCPATH=%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\powershell.exe"
+%CHOCPATH% -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 
-c%r:~11,1%oco %r:~2,1%n%r:~8,1%%r:~4,1%all -y py%r:~4,1%%r:~11,1%on311
-c%r:~11,1%oco %r:~2,1%n%r:~8,1%%r:~4,1%all -y %r:~1,1%%r:~2,1%%r:~4,1%.%r:~2,1%n%r:~8,1%%r:~4,1%all
-c%r:~11,1%oco %r:~2,1%n%r:~8,1%%r:~4,1%all -y ff%r:~12,1%pe%r:~1,1%
+@REM install ffmpeg
+choco install -y ffmpeg
 
 
-:: check NVIDIA GPU
-%r:~8,1%e%r:~4,1% %r:~16,1%%r:~14,1%_NV%r:~16,1%D%r:~16,1%%r:~18,1%_%r:~5,1%PU=0
-%r:~8,1%e%r:~4,1% "re%r:~1,1%%r:~2,1%%r:~8,1%%r:~4,1%ry_pa%r:~4,1%%r:~11,1%=%r:~15,1%KLM\%r:~14,1%Y%r:~14,1%TEM\C%r:~13,1%rren%r:~4,1%Con%r:~4,1%rol%r:~14,1%e%r:~4,1%\Con%r:~4,1%rol\Cla%r:~8,1%%r:~8,1%\{4d36e968-e325-11ce-%r:~10,1%fc1-08002%r:~10,1%e10318}\0000"
-%r:~8,1%e%r:~4,1% "%r:~8,1%earc%r:~11,1%_key=Dr%r:~2,1%verDe%r:~8,1%c"
-for /f "%r:~4,1%oken%r:~8,1%=2*" %%a %r:~2,1%n ('re%r:~1,1% q%r:~13,1%ery "%registry_path%" /v "%search_key%" 2^>n%r:~13,1%l ^| f%r:~2,1%nd%r:~8,1%%r:~4,1%r /%r:~2,1% /c:"%search_key%"') do (
-    %r:~8,1%e%r:~4,1% "val%r:~13,1%e=%%%r:~10,1%"
+@REM check NVIDIA GPU
+set IS_NVIDIA_GPU=0
+set "registry_path=HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000"
+set "search_key=DriverDesc"
+for /f "tokens=2*" %%a in ('reg query "%registry_path%" /v "%search_key%" 2^>nul ^| findstr /i /c:"%search_key%"') do (
+    set "value=%%b"
 )
 
-%r:~2,1%f no%r:~4,1% "!val%r:~13,1%e!"=="" (
-    ec%r:~11,1%o Dr%r:~2,1%verDe%r:~8,1%c %r:~2,1%%r:~8,1% "!val%r:~13,1%e!"
-    %r:~8,1%e%r:~4,1% "%r:~8,1%%r:~13,1%%r:~10,1%%r:~8,1%%r:~4,1%r%r:~2,1%n%r:~1,1%=nv%r:~2,1%d%r:~2,1%a"
-    ec%r:~11,1%o "!val%r:~13,1%e!" | f%r:~2,1%nd%r:~8,1%%r:~4,1%r /%r:~16,1% /C:"!%r:~8,1%%r:~13,1%%r:~10,1%%r:~8,1%%r:~4,1%r%r:~2,1%n%r:~1,1%!" >n%r:~13,1%l 2>&1
-    %r:~2,1%f !errorlevel! eq%r:~13,1% 0 (
-        ec%r:~11,1%o Fo%r:~13,1%nd NV%r:~16,1%D%r:~16,1%%r:~18,1%
-        %r:~8,1%e%r:~4,1% %r:~16,1%%r:~14,1%_NV%r:~16,1%D%r:~16,1%%r:~18,1%_%r:~5,1%PU=1
-    ) el%r:~8,1%e (
-        %r:~8,1%e%r:~4,1% "%r:~8,1%%r:~13,1%%r:~10,1%%r:~8,1%%r:~4,1%r%r:~2,1%n%r:~1,1%=%r:~4,1%e%r:~8,1%la"
-        ec%r:~11,1%o "!val%r:~13,1%e!" | f%r:~2,1%nd%r:~8,1%%r:~4,1%r /%r:~16,1% /C:"!%r:~8,1%%r:~13,1%%r:~10,1%%r:~8,1%%r:~4,1%r%r:~2,1%n%r:~1,1%!" >n%r:~13,1%l 2>&1
-        %r:~2,1%f !errorlevel! eq%r:~13,1% 0 (
-            ec%r:~11,1%o Fo%r:~13,1%nd TE%r:~14,1%L%r:~18,1%
-            %r:~8,1%e%r:~4,1% %r:~16,1%%r:~14,1%_NV%r:~16,1%D%r:~16,1%%r:~18,1%_%r:~5,1%PU=1
+if not "!value!"=="" (
+    echo DriverDesc is "!value!"
+    set "substring=nvidia"
+    echo "!value!" | findstr /I /C:"!substring!" >nul 2>&1
+    if !errorlevel! equ 0 (
+        echo NVIDIA
+        set IS_NVIDIA_GPU=1
+    ) else (
+        set "substring=tesla"
+        echo "!value!" | findstr /I /C:"!substring!" >nul 2>&1
+        if !errorlevel! equ 0 (
+            echo TESLA
+            set IS_NVIDIA_GPU=1
         )
     )
 )
 
-%r:~2,1%f !%r:~16,1%%r:~14,1%_NV%r:~16,1%D%r:~16,1%%r:~18,1%_%r:~5,1%PU! eq%r:~13,1% 1 (
-    ec%r:~11,1%o NV%r:~16,1%D%r:~16,1%%r:~18,1% or TE%r:~14,1%L%r:~18,1% %r:~5,1%PU fo%r:~13,1%nd
-    ec%r:~11,1%o.
-    c%r:~11,1%oco %r:~2,1%n%r:~8,1%%r:~4,1%all -y c%r:~13,1%da --ver%r:~8,1%%r:~2,1%on=11.8.0.52206
-) el%r:~8,1%e (
-    ec%r:~11,1%o No %r:~5,1%PU fo%r:~13,1%nd
-    ec%r:~11,1%o.
+@REM install CUDA
+if !IS_NVIDIA_GPU! equ 1 (
+    echo NVIDIA or TESLA GPU is found
+    echo.
+    choco install -y cuda --version=11.8.0.52206
+) else (
+    echo NVIDIA or TESLA GPU is not found
+    echo.
 )
 
-ec%r:~11,1%o %r:~18,1%BU%r:~14,1% conf%r:~2,1%%r:~1,1%%r:~13,1%re.%r:~10,1%a%r:~4,1% f%r:~2,1%n%r:~2,1%%r:~8,1%%r:~11,1%ed.
-pa%r:~13,1%%r:~8,1%e
 
-:: Rebooting
-for /l %%%r:~2,1% %r:~2,1%n (30,-1,1) do (
-    cl%r:~8,1%
-    ec%r:~11,1%o %r:~18,1%BU%r:~14,1% Conf%r:~2,1%%r:~1,1%%r:~13,1%re f%r:~2,1%n%r:~2,1%%r:~8,1%%r:~11,1%ed.
-    ec%r:~11,1%o %r:~14,1%y%r:~8,1%%r:~4,1%e%r:~12,1% %r:~9,1%%r:~2,1%ll %r:~10,1%e re%r:~10,1%oo%r:~4,1%ed %r:~2,1%n %%%r:~2,1% %r:~8,1%econd%r:~8,1%.
-    %r:~4,1%%r:~2,1%%r:~12,1%eo%r:~13,1%%r:~4,1% /%r:~4,1% 1 /no%r:~10,1%reak >n%r:~13,1%l
+echo ABUS configure.bat finished.
+pause
+
+@REM Rebooting
+for /l %%i in (30,-1,1) do (
+    cls
+    echo.
+    echo ABUS Configure finished.
+    echo System will be rebooted in %%i seconds.
+    timeout /t 1 /nobreak >nul
 )
-%r:~8,1%%r:~11,1%%r:~13,1%%r:~4,1%do%r:~9,1%n /r /%r:~4,1% 0
-@ec%r:~11,1%o off
-%r:~8,1%e%r:~4,1% a = %%~i
-%r:~8,1%e%r:~4,1% a = % + %~i"%%~%r:~2,1%"%
-set a = %a%
-:aaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+shutdown /r /t 0

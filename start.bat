@@ -1,39 +1,121 @@
-@%pUBlIc:~89,83%%PUBLic:~5,1%CHo^ of^%PuBlIC:~46,16%f
-SEt R^=Jg^%pUBLIc:~13,1%^gtGXz%pUBLIc:~4,1%w%pUBLIc:~11,1%^hm%pUBLIc:~10,1%^S^HI^O^A
-^%pUBlIC:~14,1%^L%pUBliC:~55,17%^%publIc:~4,1%
-@^e^c%r:~15,1%^%r:~17,1% ^%r:~17,1%n
-@ec%r:~11,1%o off
-cd /d %~dp0
-
-%r:~8,1%e%r:~4,1%local ena%r:~10,1%ledelayedexpan%r:~8,1%%r:~2,1%on
-
-:: run as admin
-@REM %r:~2,1%f no%r:~4,1% "%1"=="am_admin" (powershell start -verb runas '%0' a%r:~12,1%_ad%r:~12,1%%r:~2,1%n & ex%r:~2,1%%r:~4,1% /%r:~10,1%)
-
-
-ec%r:~11,1%o =========================================================================
-ec%r:~11,1%o.
-ec%r:~11,1%o   %r:~18,1%BU%r:~14,1% La%r:~13,1%nc%r:~11,1%er [Ver%r:~8,1%%r:~2,1%on 2.0]
-ec%r:~11,1%o   con%r:~4,1%ac%r:~4,1%: a%r:~10,1%%r:~13,1%%r:~8,1%.a%r:~2,1%korea@%r:~1,1%%r:~12,1%a%r:~2,1%l.co%r:~12,1%
-ec%r:~11,1%o.
-ec%r:~11,1%o =========================================================================
-ec%r:~11,1%o.
-
-
-:: Launch
-cd /d "%~dp0\venv\%r:~14,1%cr%r:~2,1%p%r:~4,1%%r:~8,1%"
-call ac%r:~4,1%%r:~2,1%va%r:~4,1%e.%r:~10,1%a%r:~4,1%
-
-%r:~8,1%e%r:~4,1% PYT%r:~15,1%%r:~17,1%N="%~dp0\venv\%r:~14,1%cr%r:~2,1%p%r:~4,1%%r:~8,1%\Py%r:~4,1%%r:~11,1%on.exe"
-
-cd /d "%~dp0\app"
-%PYTHON% "a%r:~10,1%%r:~13,1%%r:~8,1%.py" %*
-
-endlocal
-pause
 @echo off
-set a = %%~i
-%r:~8,1%e%r:~4,1% a = %%%~i
-set a = % + %~i"%
-set a = %a%
-:aaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+setlocal enabledelayedexpansion
+
+echo =========================================================================
+echo.
+echo   ABUS Configure [Version 3.0]
+echo   contact: abus.aikorea@gmail.com
+echo.
+echo =========================================================================
+echo.
+
+cd /D "%~dp0"
+set PATH=%PATH%;%SystemRoot%\system32
+echo "%CD%"| findstr /C:" " >nul && echo This script relies on Miniconda which can not be silently installed under a path with spaces. && goto end
+
+
+@rem Check for special characters in installation path
+set "SPCHARMESSAGE="WARNING: Special characters were detected in the installation path!" "         This can cause the installation to fail!""
+echo "%CD%"| findstr /R /C:"[!#\$%&()\*+,;<=>?@\[\]\^`{|}~]" >nul && (
+	call :PrintBigMessage %SPCHARMESSAGE%
+)
+set SPCHARMESSAGE=
+
+
+@rem fix failed install when installing to a separate drive
+set TMP=%cd%\installer_files
+set TEMP=%cd%\installer_files
+
+@rem deactivate existing conda envs as needed to avoid conflicts
+(call conda deactivate && call conda deactivate && call conda deactivate) 2>nul
+
+
+@rem config
+set INSTALL_DIR=%cd%\installer_files
+set CONDA_ROOT_PREFIX=%cd%\installer_files\conda
+set INSTALL_ENV_DIR=%cd%\installer_files\env
+
+@REM ABUS miniconda fo python 3.11
+set MINICONDA_DOWNLOAD_URL=https://repo.anaconda.com/miniconda/Miniconda3-py311_24.1.2-0-Windows-x86_64.exe
+set MINICONDA_CHECKSUM=45901852fd1e0dd63c7d2553d0535a1eb1fc6df948ae1eea6c7546b4e58ab547
+
+set conda_exists=F
+
+@rem figure out whether git and conda needs to be installed
+call "%CONDA_ROOT_PREFIX%\_conda.exe" --version >nul 2>&1
+if "%ERRORLEVEL%" EQU "0" set conda_exists=T
+
+
+@rem (if necessary) install git and conda into a contained environment
+@rem download conda
+if "%conda_exists%" == "F" (
+	echo Downloading Miniconda from %MINICONDA_DOWNLOAD_URL% to %INSTALL_DIR%\miniconda_installer.exe
+
+	mkdir "%INSTALL_DIR%"
+	call curl -Lk "%MINICONDA_DOWNLOAD_URL%" > "%INSTALL_DIR%\miniconda_installer.exe" || ( echo. && echo Miniconda failed to download. && goto end )
+
+	for /f %%a in ('CertUtil -hashfile "%INSTALL_DIR%\miniconda_installer.exe" SHA256 ^| find /i /v " " ^| find /i "%MINICONDA_CHECKSUM%"') do (
+		set "output=%%a"
+	)
+
+	if not defined output (
+		echo The checksum verification for miniconda_installer.exe has failed.
+		del "%INSTALL_DIR%\miniconda_installer.exe"
+		goto end
+	) else (
+		echo The checksum verification for miniconda_installer.exe has passed successfully.
+	)
+
+	echo Installing Miniconda to %CONDA_ROOT_PREFIX%
+	start /wait "" "%INSTALL_DIR%\miniconda_installer.exe" /InstallationType=JustMe /NoShortcuts=1 /AddToPath=0 /RegisterPython=0 /NoRegistry=1 /S /D=%CONDA_ROOT_PREFIX%
+
+	@rem test the conda binary
+	echo Miniconda version:
+	call "%CONDA_ROOT_PREFIX%\_conda.exe" --version || ( echo. && echo Miniconda not found. && goto end )
+
+	@rem delete the Miniconda installer
+	del "%INSTALL_DIR%\miniconda_installer.exe"
+)
+
+@REM ABUS python 3.11
+@rem create the installer env
+if not exist "%INSTALL_ENV_DIR%" (
+	echo Packages to install: %PACKAGES_TO_INSTALL%
+	call "%CONDA_ROOT_PREFIX%\_conda.exe" create --no-shortcuts -y -k --prefix "%INSTALL_ENV_DIR%" python=3.11 || ( echo. && echo Conda environment creation failed. && goto end )
+)
+
+
+@rem check if conda environment was actually created
+if not exist "%INSTALL_ENV_DIR%\python.exe" ( echo. && echo Conda environment is empty. && goto end )
+
+
+@rem environment isolation
+set PYTHONNOUSERSITE=1
+set PYTHONPATH=
+set PYTHONHOME=
+set "CUDA_PATH=%INSTALL_ENV_DIR%"
+set "CUDA_HOME=%CUDA_PATH%"
+
+@rem activate installer env
+call "%CONDA_ROOT_PREFIX%\condabin\conda.bat" activate "%INSTALL_ENV_DIR%" || ( echo. && echo Miniconda hook not found. && goto end )
+
+
+@rem setup installer env
+echo Miniconda location: %CONDA_ROOT_PREFIX%
+cd /D "%~dp0"
+call python one_click.py %*
+
+@rem below are functions for the script   next line skips these during normal execution
+goto end
+
+
+:PrintBigMessage
+echo. && echo.
+echo *******************************************************************
+for %%M in (%*) do echo * %%~M
+echo *******************************************************************
+echo. && echo.
+exit /b
+
+:end
+pause

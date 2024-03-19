@@ -142,4 +142,12 @@
     "append_punctuations": "\"\'.。,，!！?？:：”)]}、",
     // (requires --word_timestamps True) underline each word as it is spoken in srt and vtt
     "highlight_words": true,
+
+    // * WEBUI etc *
+    "burn_subtitles": false,
+    "video_quality": "best",
+    "audio_format": "mp3",
+    "demucs_model": "htdemucs",
+    "karaoke_mode": "Instrumental"
+
 }

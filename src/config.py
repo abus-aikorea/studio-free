@@ -9,6 +9,43 @@ import torch
 
 from tqdm import tqdm
 
+
+class UserConfig:
+    def __init__(self, user_config_path):
+        self.user_config_path = user_config_path
+        self.default_user_config = {
+            "gradio_language": "Korean",
+            "default_model_name": "medium",
+            "language": "Korean",
+            "highlight_words": False,
+            "burn_subtitles": False,
+            "video_quality": "best",
+            "audio_format": "flac",
+            "demucs_model": "htdemucs",
+            "karaoke_mode": "Instrumental",
+        }
+        self.user_config = self.load_user_config()
+
+
+    def load_user_config(self):
+        try:
+            with open(self.user_config_path, "r") as file:
+                return json5.load(file)
+        except Exception as e:
+            return self.default_user_config
+
+    def save_user_config(self):
+        with open(self.user_config_path, "w") as file:
+            json5.dump(self.user_config, file, indent=4)
+
+    def get(self, key, default=None):
+        return self.user_config.get(key, default)
+
+    def set(self, key, value):
+        self.user_config[key] = value
+        self.save_user_config()
+
+
 class ModelConfig:
     def __init__(self, name: str, url: str, path: str = None, type: str = "whisper"):
         """
@@ -69,7 +106,14 @@ class ApplicationConfig:
                  # Word timestamp settings
                  word_timestamps: bool = False, prepend_punctuations: str = "\"\'“¿([{-",
                  append_punctuations: str = "\"\'.。,，!！?？:：”)]}、", 
-                 highlight_words: bool = False):
+                 highlight_words: bool = False,
+                 # WEBUI etc
+                 burn_subtitles: bool = False,
+                 video_quality: str = "best",
+                 audio_format: str = "mp3",
+                 demucs_model: str = "htdemucs",
+                 karaoke_mode: str = "Instrumental"
+            ):
         
         self.models = models
         
@@ -120,6 +164,15 @@ class ApplicationConfig:
         self.prepend_punctuations = prepend_punctuations
         self.append_punctuations = append_punctuations
         self.highlight_words = highlight_words
+        
+        # WEBUI etc
+        self.burn_subtitles = burn_subtitles
+        self.video_quality = video_quality
+        self.audio_format = audio_format
+        self.demucs_model = demucs_model
+        self.karaoke_mode = karaoke_mode      
+        
+        
         
     def get_model_names(self):
         return [ x.name for x in self.models ]
